@@ -9,9 +9,7 @@
    <div class="col-md-12">
 
      <EventItem
-       v-for="(event_item, index) in this.$store.state.events"
-       :event="event_item"
-       v-bind:key="index"
+
      />
    </div>
   </div>

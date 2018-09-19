@@ -1,8 +1,8 @@
 <template>
-  <div class="col-md-for">
-    <div class="event-card">
+  <div class="col-md-for" >
+    <div class="event-card" v-for="event of events" :key="event['.key']">
 
-     <button class="close" @click="deleteEvent()"><span>&times;</span></button>
+     <button class="close" @click="deleteEvent(event['.key'])"><span>&times;</span></button>
       <h4 class="card-title">{{ event.title }}</h4>
       <p class="card-text">{{ event.description }}</p>
       <ul class="list-group list-group-flush">
@@ -23,20 +23,26 @@
 </style>
 
 <script>
-import { eventsRef } from '../config/db';
-import { mapActions } from 'vuex'
+
+import { db } from '../config/db';
 export default {
-  props: ['event', 'index'],
+  components: {
+      name: 'EventItem.vue'
+  },
+   data() {
+    return {
+      events: []
+    }
+  },
+  firebase: {
+    events: db.ref('events')
+  },
   methods: {
-    deleteEvent() {
-    eventsRef.child.event.remove()
-
-    mapActions([
-    'removeEvent'
-  ])
-   },
-
+    deleteEvent(key) {
+    this.$firebaseRefs.events.child(key).remove();
+    }
   }
 }
 </script>
+
 
