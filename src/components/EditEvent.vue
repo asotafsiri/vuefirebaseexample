@@ -1,25 +1,24 @@
 <template>
   <div class="">
-    <h4>Add an Event <input type="checkbox" v-model="showForm"></h4>
-    <div class="form" v-if="showForm">
+    <h4> Edit this Event </h4>
       <div class="form-group">
         <label>Title</label>
-        <input type="text" class="form-control" v-model="event.title">
+        <input type="text" class="form-control" v-model="newEvent.title">
       </div>
       <div class="form-group">
         <label>Description</label>
-        <input type="text" class="form-control" v-model="event.description">
+        <input type="text" class="form-control" v-model="newEvent.description">
       </div>
        <div class="form-group">
         <label>Date</label>
-        <input type="date" class="form-control" v-model="event.date">
+        <input type="date" class="form-control" v-model="newEvent.date">
       </div>
        <div class="form-group">
         <label>Location</label>
-        <input type="text" class="form-control" v-model="event.location">
+        <input type="text" class="form-control" v-model="newEvent.location">
       </div>
-      <button class="btn-sm btn-primary" @click="addEvent">Submit</button>
-    </div>
+      <button class="btn-sm btn-primary" @click="updateEvent">Submit</button>
+
   </div>
 </template>
 
@@ -56,7 +55,7 @@ export default {
   methods: {
     updateEvent() {
       this.$firebaseRefs.events.child(this.$route.params.id).set(this.newEvent);
-      this.$router.push('/index')
+      this.$router.push('/dashboard')
     }
   }
 }

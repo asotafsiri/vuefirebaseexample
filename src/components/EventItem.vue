@@ -9,6 +9,11 @@
         <li class="list-group-item">Date: {{ event.date }}</li>
         <li class="list-group-item">Location: {{ event.location }}</li>
         <li class="list-group-item">Host: {{ event.email }}</li>
+        <li>
+          <router-link :to="{ name: 'EditEvent', params: {id: event['.key']} }" class="btn btn-warning">
+            Edit
+          </router-link>
+        </li>
       </ul>
     </div>
 

@@ -10,7 +10,7 @@ import store from './store'
 import Dashboard from './components/Dashboard.vue'
 import Signin from './components/Signin.vue'
 import Signup from './components/Signup.vue'
-
+import EditEvent from './components/EditEvent.vue'
 import AddItem from './components/AddItem.vue'
 import EditItem from './components/EditItem.vue'
 import ListItem from './components/ListItem.vue'
@@ -57,6 +57,11 @@ const routes = [
     name: 'signup',
     path: '/signup',
     component: Signup
+  },
+  {
+    name: 'EditEvent',
+    path: '/EditEvent/:id',
+    component: EditEvent
   }
 ];
 
