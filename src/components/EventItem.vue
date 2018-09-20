@@ -1,6 +1,5 @@
 <template>
   <div class="col-md-for" >
-    <h4> {{ this.$store.state.user.email}}</h4>
     <div class="col-md-12" v-for="event of events" :key="event['.key']">
     <div class="event-card" v-if="showData(event)" >
      <button class="close" @click="deleteEvent(event['.key'])"><span>&times;</span></button>
