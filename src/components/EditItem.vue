@@ -6,7 +6,7 @@
             </div>
             <div class="card-body">
                 <form v-on:submit.prevent="updateItem">
-                    <div class="form-group">
+                    <div class="form-group" >
                         <label>Item Name:</label>
                         <input type="text" class="form-control" v-model="newItem.name"/>
                     </div>

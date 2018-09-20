@@ -1,7 +1,8 @@
 <template>
   <div class="col-md-for" >
-    <div class="event-card" v-for="event of events" :key="event['.key']">
-
+    <h4> {{ this.$store.state.user.email}}</h4>
+    <div class="col-md-12" v-for="event of events" :key="event['.key']">
+    <div class="event-card" v-if="showData(event)" >
      <button class="close" @click="deleteEvent(event['.key'])"><span>&times;</span></button>
       <h4 class="card-title">{{ event.title }}</h4>
       <p class="card-text">{{ event.description }}</p>
@@ -9,6 +10,7 @@
         <li class="list-group-item">Date: {{ event.date }}</li>
         <li class="list-group-item">Location: {{ event.location }}</li>
         <li class="list-group-item">Host: {{ event.email }}</li>
+
         <li>
           <router-link :to="{ name: 'EditEvent', params: {id: event['.key']} }" class="btn btn-warning">
             Edit
@@ -16,7 +18,7 @@
         </li>
       </ul>
     </div>
-
+   </div>
   </div>
 </template>
 <style>
@@ -38,6 +40,7 @@ export default {
     return {
       events: []
     }
+
   },
   firebase: {
     events: db.ref('events')
@@ -45,6 +48,14 @@ export default {
   methods: {
     deleteEvent(key) {
     this.$firebaseRefs.events.child(key).remove();
+    },
+    showData(event){
+      if ( this.$store.state.user.email == event.email) {
+       return true;
+      }
+      else {
+        return false;
+      }
     }
   }
 }

@@ -2,12 +2,12 @@
 
   <div class="">
     <h3>Event Dashboard</h3>
+    <h4> {{ this.$store.state.user.email}}</h4>
     <button class="btn btn-danger btn-sm signout-btn" @click="signOut">Sign Out </button>
     <hr>
     <AddEvent />
     <hr>
    <div class="col-md-12">
-
      <EventItem
 
      />
