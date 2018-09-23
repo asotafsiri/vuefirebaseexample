@@ -18,6 +18,9 @@
         <label>Location</label>
         <input type="text" class="form-control" v-model="event.location">
       </div>
+      <div class="form-group">
+        <li>Done <input type="checkbox" v-model="Done"></li>
+      </div>
       <button class="btn-sm btn-primary" @click="addEvent">Submit</button>
     </div>
   </div>
@@ -32,9 +35,11 @@ export default {
         description: '',
         date: '',
         location: '',
-        email: ''
+        email: '',
+        Done: false
       },
-      showForm: false
+      showForm: false,
+
     }
   },
   methods: {
